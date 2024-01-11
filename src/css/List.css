@@ -11,20 +11,6 @@ body{
     min-height: 100vh;
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px 20px;
-    background: #e3e6f3;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-    align-items: center;
-    justify-content: space-between;
-    z-index: 99;
-    display: flex;
-}
-
 table, th, td{
     padding: 0.5rem;
     border-collapse: collapse;
@@ -37,7 +23,7 @@ main.wrapper{
     bottom: 7%;
     width: 85vw;
     height: 80vh;
-    background-color: #e3e6f3;
+    background-color:#aef3ed52;
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
     overflow: hidden;
@@ -51,6 +37,7 @@ main.wrapper{
     padding: .8rem 1rem;
     user-select: none;
     color: #162938;
+    text-align: center;
 }
 
 .body{
@@ -60,6 +47,7 @@ main.wrapper{
     margin: .8rem auto;
     border-radius: .6rem;
     overflow: auto;
+    font-weight: bold;
 }
 
 .foot{
@@ -68,6 +56,7 @@ main.wrapper{
     background-color: #fff4;
     text-align: center;
     padding-top: 20px;
+    border-radius: 20px;
 }
 
 .body::-webkit-scrollbar{
@@ -94,7 +83,7 @@ thead th{
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #d5d1defe;
+    background-color:#b8f0f4c4;
     color: #162938;
 }
 
@@ -121,31 +110,42 @@ tbody tr:hover{
     color: #fff;
     border: 2px solid rgb(16, 16, 16);
     background: #162938;
-    width: 5em;
+    width: 7em;
     height:3em;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
+    margin-left: 30px;
 }
-
+.teamregister{
+    font-size: 1.1em;
+    color: #fff;
+    border: 2px solid rgb(16, 16, 16);
+    background: #162938;
+    width: 7em;
+    height:3em;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 200px;
+}
 .del{
-    font-size: 0.5em;
+    font-size: 17px;
     color: red;
     border: 1px solid rgb(16, 16, 16);
     background: #162938;
-    width: 7em;
-    height:6em;
+    width: 60px;
+    height:40px;
     border-radius: 10px;
     cursor: pointer;
     margin: 1px;
 }
 
 .up{
-    font-size: 0.5em;
-    color: #fff;
+    font-size: 17px;
+    color: #a7e89c;
     border: 1px solid rgb(16, 16, 16);
     background: #162938;
-    width: 7em;
-    height:6em;
+    width: 60px;
+    height:40px;
     border-radius: 10px;
     cursor: pointer;
     margin: 1px;

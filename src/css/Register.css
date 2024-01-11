@@ -11,20 +11,6 @@ body{
     min-height: 100vh;
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px 20px;
-    background: #e3e6f3;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-    align-items: center;
-    justify-content: space-between;
-    z-index: 99;
-    display: flex;
-}
-
 .wrapper{
     position: fixed;
     bottom: 7%;
@@ -50,7 +36,8 @@ label{
     background-color: #fff4;
     padding: .8rem 1rem;
     user-select: none;
-    color: #162938
+    color: #162938;
+    text-align: center;
 }
 
 .body{
@@ -79,11 +66,12 @@ label{
 }
 
 .input-box-number{
-    width: 75px;
+    width: 300px;
+    
 }
 
 .input-box{
-    width: 30%;
+    width: 40%;
 }
 
 .input-box-option{
@@ -106,6 +94,7 @@ label{
 
 .body div{
     padding-bottom:20px;
+    margin-top: 5%;
 }
 
 .foot{
@@ -122,9 +111,6 @@ label{
     margin-bottom: 20px;
 }
 
-.explain{
-    margin-top:20px;
-}
 
 .err{
     color: red;
