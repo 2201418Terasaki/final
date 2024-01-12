@@ -25,28 +25,30 @@
                         echo '<tr>';
                             $clubname=$row['club_name'];
                             $player=$row['player_name'];
-                            /*$path="./img/{$category}";
-                            $path1="./img/{$category}/{$id}";
+                            $path="./image/{$clubname}";
+                            $path1="./image/{$clubname}/{$player}";
                             if(!file_exists($path)){
-                                mkdir("./img/{$category}", 0777);
+                                mkdir("./image/{$clubname}", 0777);
                             }
                             if(!file_exists($path1)){
-                                mkdir("./img/{$category}/{$id}", 0777);
+                                mkdir("./image/{$clubname}/{$player}", 0777);
                             }
-        */
-                            $imageDirectory = 'img/' . $category . '/'.$id.'/';
+        
+                            $imageDirectory = 'image/' . $clubname . '/'.$player.'/';
                             // 画像ファイルを取得
                             $images = glob($imageDirectory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-                        
+                            echo'<td style="word-break: break-word">';
                             if (!empty($images)) {
                                 foreach ($images as $image) {
                                     $fileName = basename($image);
+                                   
                                     echo '<a style="cursor:zoom-in;" href="' . $image . '" data-lightbox="group"><img src="' . $image . '" alt="' . $fileName . '" width="65" height="65"></a>';
+                                   
                                 }
                             } else {
-                               echo '<td class="center" style="word-break: break-word">No images</td>';
+                               echo 'No images';
                             }
-                            
+                            echo'</td>';
                            
                             echo '<td class="center" style="word-break: break-word">'.$row['player_name'].'</td>';
                             echo '<td class="center" style="word-break: break-word">'.$row['nationality'].'</td>';
@@ -56,14 +58,14 @@
                             echo '</td>';
 
                             echo '<td class="center">';
-                                echo '<form action="ManageUpdate.php" method="post">';
-                                    echo '<input type="hidden" name="id" value="'.$row['goods_id'].'">';
+                                echo '<form action="PlayerUpdate.php" method="post">';
+                                    echo '<input type="hidden" name="id" value="'.$row['player_id'].'">';
                                     echo '<button class="up" type ="submit">更新</button>';
                                 echo '</form>';
-                                echo '<form action="ManageDeleteFinish.php" method="post">';
-                                    echo '<input type="hidden" name="delcategory" value="'.$row['category_name'].'">';
-                                    echo '<input type="hidden" name="delname" value="'.$row['goods_name'].'">';
-                                    echo '<input type="hidden" name="delid" value="'.$row['goods_id'].'">';
+                                echo '<form action="PlayerDeleteFinish.php" method="post">';
+                                    echo '<input type="hidden" name="club_name" value="'.$row['club_name'].'">';
+                                    echo '<input type="hidden" name="player_name" value="'.$row['player_name'].'">';
+                                    echo '<input type="hidden" name="player_id" value="'.$row['player_id'].'">';
                                     echo '<button onclick="'.$delete.'" class="del" type ="submit">削除</button>';
                                 echo '</form>';
                         echo '</td></tr>';

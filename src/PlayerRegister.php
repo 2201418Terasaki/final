@@ -16,7 +16,7 @@
             <section class="head">
                 <h2>選手登録</h2>
             </section>
-            <form action = "ManageRegisterFinish.php" method = "post" enctype="multipart/form-data">
+            <form action = "PlayerRegisterFinish.php" method = "post" enctype="multipart/form-data">
                 <section class="body">
                     <div class="image">
                         <label>画像：</label>
@@ -26,38 +26,30 @@
                     </div>
                     <div>
                         <label>選手名　　：</label>
-                        <input class="input-box-number" type="text" style="padding: 5px;" placeholder=選手名 required="required" name="piece" maxlength="50">
+                        <input class="input-box-number" type="text" style="padding: 5px;" placeholder=選手名 required="required" name="name" maxlength="50">
                     </div>
                         
                     <div>
                     <label>クラブ名　：</label>
-                        <select name="category" class="input-box-option" style="padding: 5px;" required="required">
-                          <option selected value="">選んでください</option>
+                        <select name="club" class="input-box-option" style="padding: 5px;" required="required">
+                          <option value="マンチェスターシティ" selected>選んでください</option>
                           <?php
-                          $cate =[
-                            1 => '家具',
-                            2 => 'ゲーム機',
-                            3 => '家電',
-                            4 => '靴',
-                            5 => 'おもちゃ',
-                            6 => 'スマートフォン',
-                            7 => '服',
-                            8 => '本'
-                            ];
-                        foreach($cate as $CateId => $CateName){
-                            echo  '<option value="'.$CateId.'">'.$CateName.'</option>';
+                          $sql=$pdo->query('select * from Club');
+                          
+                        foreach($sql as $row){
+                            echo  '<option value="'.$row['club_name'].'">'.$row['club_name'].'</option>';
                         }
                           ?>
                         </select>
                     </div>
                     <div>
                         <label>国籍　　　：</label>
-                        <input name="name" class="input-box" type="text" style="padding: 5px;" placeholder="商品名を入力してください" maxlength="50" required="required">
+                        <input name="nationality" class="input-box" type="text" style="padding: 5px;" placeholder="国籍を入力してください" maxlength="50" required="required">
                     </div>
                     <div>
                         <label>ポジション：</label>
-                        <select name="category" class="input-box-option" style="padding: 5px;" required="required">
-                          <option selected>選んでください</option>
+                        <select name="position" class="input-box-option" style="padding: 5px;" required="required">
+                          <option selected value="">選んでください</option>
                           <option value="FW">FW</option>
                           <option value="MF">MF</option>
                           <option value="DF">DF</option>
