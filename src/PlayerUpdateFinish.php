@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -12,48 +11,31 @@
 <body>
     <?php
 require 'db-connect.php';
-    if(isset($_SESSION['manager'])){
     ?>
-    <header>
-    <img style="user-select: none;" src="img/logo.png" class="logo" alt="" width="100" height="65">
-        <nav class="logout">
-            <a href="ManageLogin.php">ログアウト</a>
-        </nav>
-    </header>
     <main class="wrapper">
         <section class="body">
         <?php
-                $categories = array(
-                    1 => '家具',
-                    2 => 'ゲーム機',
-                    3 => '家電',
-                    4 => '靴',
-                    5 => 'おもちゃ',
-                    6 => 'スマートフォン',
-                    7 => '服',
-                    8 => '本'
-                );
-                $key=$_POST['category'];
-                $Okey=$_POST['OldCategory'];
-                $category=$categories[$key];
-                $Ocategory=$categories[$Okey];
-                $name=$_POST['name'];
-                $Oname=$_POST['OldName'];
-                $OldPath="./img/{$Ocategory}";
-                $OldPath1="./img/{$Ocategory}/{$Oname}";
-                $path="./img/{$category}";
-                $path1="./img/{$category}/{$name}";
-                $imageDirectory = 'img/' . $category . '/'.$name.'/';
-                $OldimageDirectory = 'img/' . $Ocategory . '/'.$Oname.'/';
+                  $club = $_POST['club'];
+                  $name = $_POST['name'];
+                  $nationality = $_POST['nationality'];
+                  $position = $_POST['position'];
+                  $path = "./image/{$club}";
+                  $path1 = "./image/{$club}/{$name}";
+                $Ocategory=$_POST['oldclub'];
+                $Oname=$_POST['oldname'];
+                $OldPath="./image/{$Ocategory}";
+                $OldPath1="./image/{$Ocategory}/{$Oname}";
+                $imageDirectory = $path1.'/';
+                $OldimageDirectory = 'image/' . $Ocategory . '/'.$Oname.'/';
                 $images = glob($imageDirectory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
                 $Oimages = glob($OldimageDirectory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
                 
                     
                     if(!file_exists($path)){
-                        mkdir("./img/{$category}", 0777);
+                        mkdir("./image/{$club}", 0777);
                     }
                     if(!file_exists($path1)){
-                        mkdir("./img/{$category}/{$name}", 0777);
+                        mkdir("./image/{$club}/{$name}", 0777);
                     }
                 $target_dir = $path1."/";
 
@@ -93,36 +75,19 @@ require 'db-connect.php';
                         }
                 }
                 echo '<label>更新に成功しました</label>';
-                $pdo = new PDO($connect, USER, PASS);
-                $sql=$pdo->prepare('update goods set category_id = ?,goods_name = ?,price = ?,updated_date=?,count=?,exp =? where goods_id=?');
-                $sql->execute([$_POST['category'],$_POST['name'],$_POST['price'],date("Y/m/d",time()),$_POST['piece'],$_POST['explain'],$_POST['id']]);
-                
+                $club_id_query = $pdo->prepare('SELECT club_id FROM Club WHERE club_name = ?');
+                $club_id_query->execute([$club]);
+                $club_id = $club_id_query->fetchColumn();
+
+                $sql=$pdo->prepare('update Player set player_name = ?,club_id = ?,nationality = ?,position=? where player_id=?');
+                $sql->execute([$_POST['name'], $club_id,$_POST['nationality'],$_POST['position'],$_POST['id']]);
                 ?>
         </section>
         <section class="foot">
-            <form action="ManageList.php" method="post">
-                <button class="register" type="submit">商品一覧へ</button>
+            <form action="index.php" method="post">
+                <button class="register" type="submit">選手一覧へ</button>
             </form>
         </section>
     </main>
-
-    <?php
-    }else{
-        echo '<header>';
-        echo '<img style="user-select: none;" src="img/logo.png" class="logo" alt="" width="100" height="65">';
-        echo '</header>';
-        echo '<main class="WrapperFinish">';
-        echo '<section class="BodyFinish">';
-        echo    '<label style="color:red;">ログインしてください</label>';
-        echo '</section>';
-        echo '<section class="FootFinish">';
-        echo '<form action="ManageLogin.php" method="post">';
-        echo     '<input type="hidden" name="logout">';
-        echo     '<button class="register" type="submit">ログイン</button>';
-        echo '</form>';
-        echo '</section>';
-        echo '</main>';
-    }
-    ?>
 </body>
 </html>

@@ -14,7 +14,7 @@
     ?>
         <div class="wrapper">
             <section class="head">
-                <h2>選手登録</h2>
+                <h3>選手登録</h3>
             </section>
             <form action = "PlayerRegisterFinish.php" method = "post" enctype="multipart/form-data">
                 <section class="body">
@@ -32,7 +32,7 @@
                     <div>
                     <label>クラブ名　：</label>
                         <select name="club" class="input-box-option" style="padding: 5px;" required="required">
-                          <option value="マンチェスターシティ" selected>選んでください</option>
+                          <option value="マンチェスターシティ" selected>マンチェスターシティ</option>
                           <?php
                           $sql=$pdo->query('select * from Club');
                           

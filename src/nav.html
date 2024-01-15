@@ -1,0 +1,86 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamburger Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    .menu {
+  display: none;
+  flex-direction: column;
+  background-color: #444;
+ /* position: absolute;*/
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  width: 240px; /* メニューの幅を調整 */
+  padding: 10px;
+  z-index: 20 !important;
+  box-sizing: border-box;
+  display: flex; /* 追加 */
+  height: 90%;
+  border-radius: 15px;
+  transition: left 0.3s ease; /* スライドのトランジションを追加 */
+}
+
+.hamburger-menu {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  top: 0px;
+  border-radius: 1px;
+  width: 100%;
+  left: 0px;
+  height: 50px;
+  z-index: 2; /* 調整した値 */
+}
+
+.menu-btn {
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: 20px; /* ボタンとメニューの間に余白を設定 */
+}
+
+
+    .menu-btn {
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    .menu-close {
+      cursor: pointer;
+      align-self: flex-end;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+
+    .menu-item {
+      padding: 10px;
+      cursor: pointer;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="hamburger-menu">
+    <div class="menu-btn" @click="toggleMenu">&#9776;</div>
+    <div class="menu" v-show="isMenuOpen">
+      <div class="menu-close" @click="closeMenu">×</div>
+      <div class="menu-item" @click="closeMenu">選手一覧</div>
+      <div class="menu-item" @click="closeMenu">チーム管理</div>
+      <div class="menu-item" @click="closeMenu">順位管理</div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./script/nav.js"></script>
+</body>
