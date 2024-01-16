@@ -70,10 +70,13 @@ label{
     color: #fff;
     border: 2px solid rgb(16, 16, 16);
     background: #162938;
-    width: 7em;
-    height:3em;
+    height:2.7em;
     border-radius: 10px;
     cursor: pointer;
+    margin: 0 100px;
+    position: fixed;
+    left: 38%;
+    top: 75%;
 }
 
 main.WrapperFinish{

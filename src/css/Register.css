@@ -93,7 +93,7 @@ label{
   }
 
 .body div{
-    padding-bottom:20px;
+    
     margin-top: 5%;
 }
 
@@ -122,12 +122,31 @@ label{
     border: 2px solid rgb(16, 16, 16);
     background: #162938;
     width: 5em;
-    height:3em;
+    height:2.5em;
     border-radius: 10px;
     cursor: pointer;
     width: 100px;
     margin: 0 100px;
+    position: fixed;
+    left: 48%;
+    top: 84%;
 }
+.back{
+    font-size: 1.1em;
+    color: #fff;
+    border: 2px solid rgb(16, 16, 16);
+    background: #162938;
+    width: 5em;
+    height:2.5em;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    margin: 0 100px;
+    position: fixed;
+    left: 31%;
+    top: 84%;
+}
+
 
 main.WrapperFinish{
     position: fixed;

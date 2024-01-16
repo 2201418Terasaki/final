@@ -9,7 +9,7 @@ new Vue({
       },
       closeMenu() {
         this.isMenuOpen = false;
-      }
+      },
     }
   });
   

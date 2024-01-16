@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
@@ -22,28 +21,27 @@
         
         <div class="wrapper">
             <section class="head">
-                <h3>選手更新</h3>
+                <h3>クラブ更新</h3>
             </section>
             <?php
                  echo '<input type="hidden" name="id" value="'.$_POST['id'].'">';
-                $l = "location.href='index.php'";
+                $l = "location.href='Clubmanage.php'";
                 $file = "fileInput";
-                $sql=$pdo->prepare('select Player. * , club_name from Player inner join Club on Player.club_id = Club.club_id where player_id=?');
+                $sql=$pdo->prepare('select * from Club  where club_id=?');
 	            $sql->execute([$_POST['id']]);
             
                 foreach($sql as $row){
-                    echo '<form action = "PlayerUpdateFinish.php" method = "post" enctype="multipart/form-data">';
-                    echo     '<input type="hidden" name="id" value="'.$row['player_id'].'">';
-                    echo     '<input type="hidden" name="oldclub" value="'.$row['club_name'].'">';
-                    echo     '<input type="hidden" name="oldname" value="'.$row['player_name'].'">';
+                    echo '<form action = "ClubUpdateFinish.php" method = "post" enctype="multipart/form-data">';
+                    echo     '<input type="hidden" name="id" value="'.$row['club_id'].'">';
+                    echo     '<input type="hidden" name="name" value="'.$row['club_name'].'">';
                     echo     '<section class="body">';
                     echo         '<div class="image">';
                     echo             '<label>画像：</label>';
                     $club_name=$row['club_name'];
-                    $name=$row['player_name'];
-                    $nationality=$_POST['nationality'];
-                    $position=$_POST['position'];
-                    $imageDirectory = 'image/' . $club_name . '/'.$name.'/';
+                    $hometown=$row['club_town'];
+                    $manager=$row['club_manager'];
+                    $site=$row['club_url'];
+                    $imageDirectory = 'image/' . $club_name . '/';
                     $images = glob($imageDirectory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
                     if (!empty($images)) {
                         foreach ($images as $image) {
@@ -57,40 +55,22 @@
                     echo             '<span id="imagePreviews" width=""></span>';
                     echo             '<input type="button" id="loadFileXml" value="画像" class="imageButton" onclick="document.getElementById(\'' . $file . '\').click();" />';
                     echo             '<input type="file" style="display:none;" name="files[]" id="fileInput" multiple="multiple" onchange="previewImages()">';
-                    echo         '</div>';
-                    echo '<div>';
-                    echo '<label>選手名　　：</label>';
-                    echo '<input class="input-box-number" type="text" value="'.$name.'" style="padding: 5px;" placeholder=選手名 required="required" name="name" maxlength="50">';
-                    echo '</div>';
-                    
+                    echo         '</div>';                 
                     echo         '<div>';
-                    echo         '<label>クラブ名　：</label>';
-                    echo             '<select name="club" class="input-box-option" style="padding: 5px;">';
-                    echo               '<option value="'.$row['club_name'].'" selected>'.$row['club_name'].'</option>';
-                    $sql=$pdo->query('select * from Club where club_flag=1');  
-                    foreach($sql as $row){
-                    echo  '<option value="'.$row['club_name'].'">'.$row['club_name'].'</option>';
-                    }
-                    echo             '</select>';
+                    echo         '<label>監督名　　：</label>';
+                    echo             '<input name="manager" class="input-box" type="text"value="'.$manager.'" style="padding: 5px;" placeholder="監督名を入力してください" required="required"maxlength="50">';
+                 
                     echo         '</div>';
                     echo         '<div>';
-                    echo             '<label>国籍　　　：</label><input name="nationality" class="input-box" type="text"value="'.$nationality.'" style="padding: 5px;" placeholder="商品名を入力してください" value="'.$row['goods_name'].'" required="required"maxlength="50">';
+                    echo             '<label>公式サイト：</label><input name="site" value="'.$site.'" class="input-box" type="text" style="padding: 5px;" placeholder="公式サイトを入力してください"  required="required"maxlength="500">';
                     echo         '</div>';
-                    echo '<div>';
-                    echo '<label>ポジション：</label>';
-                    echo '<select name="position" class="input-box-option" style="padding: 5px;" required="required">';
-                    echo '<option value="'.$position.'" selected>'.$position.'</option>';
-                    echo '<option value="FW">FW</option>';
-                    echo '<option value="MF">MF</option>';
-                    echo '<option value="DF">DF</option>';
-                    echo '<option value="GK">GK</option>';     
-                    echo '</select>';
-                    echo '</div>';
+            
 
                     echo     '</section>';
                     echo     '<section class="foot">';
                     echo         '<input type="button" value="戻る" class="back" onclick="'.$l.'">';
                     echo         '<button class="register" type="submit">更新</button>';
+                   
                     echo     '</section>';
                     echo '</form>';
                 }

@@ -75,9 +75,9 @@
     <div class="menu-btn" @click="toggleMenu">&#9776;</div>
     <div class="menu" v-show="isMenuOpen">
       <div class="menu-close" @click="closeMenu">×</div>
-      <div class="menu-item" @click="closeMenu">選手一覧</div>
-      <div class="menu-item" @click="closeMenu">チーム管理</div>
-      <div class="menu-item" @click="closeMenu">順位管理</div>
+      <a class="menu-item" href="index.php" >選手一覧</a>
+      <a class="menu-item" href="Clubmanage.php">クラブ管理</a>
+      <a class="menu-item" href="index.php">順位管理</a>
     </div>
   </div>
 </div>

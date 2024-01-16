@@ -34,7 +34,7 @@
                         <select name="club" class="input-box-option" style="padding: 5px;" required="required">
                           <option value="マンチェスターシティ" selected>マンチェスターシティ</option>
                           <?php
-                          $sql=$pdo->query('select * from Club');
+                          $sql=$pdo->query('select * from Club where club_flag=1');
                           
                         foreach($sql as $row){
                             echo  '<option value="'.$row['club_name'].'">'.$row['club_name'].'</option>';
@@ -58,7 +58,7 @@
                     </div>
                 </section>
                 <section class="foot">
-                    <button class="register" onclick="location.href='index.php'" type="submit">戻る</button>
+                    <button class="back" onclick="location.href='index.php'" type="submit">戻る</button>
                     <button class="register" type="submit">登録</button>
                 </section>
             </form>
