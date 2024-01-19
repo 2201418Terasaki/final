@@ -1,9 +1,8 @@
-// jQuery読み込み
 $(function() {
 $.ajaxSetup({
-headers : {"X-Auth-Token" :" 9efb1d1981a242df9380ca43e0985cbe"}
+headers : {"X-Auth-Token" : "9efb1d1981a242df9380ca43e0985cbe"}
 });
-$.getJSON('https://api.football-data.org/v2/competitions/PL/standings?standingType=TOTAL', function (data_PL) {
+$.getJSON('https://api.football-data.org/v4/competitions/PL/standings?standingType=TOTAL', function (data_PL) {
 //JSON取得後の処理
 standings = data_PL.standings[0].table;
 // 順位表にデータを挿入

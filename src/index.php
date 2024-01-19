@@ -18,12 +18,12 @@ require 'nav.html';
     require 'db-connect.php';
                 echo '<main class="wrapper">';
                 echo    '<section class="head">';
-                echo        '<h3>2023～2024プレミアリーグ選手一覧</h3>';
+                echo        '<h3>プレミアリーグ選手一覧</h3>';
                 echo    '</section>';
                 echo    '<section class="body">';
                 
                 $delete = "return confirm('削除しますか？')";
-                echo '<table><thead><tr><th width="15%">選手画像</th><th  width="15%">選手名</th><th  width="15%">国籍</th><th  width="15%">ポジション</th><th  width="15%">クラブ名</th><th></th><th  width="10%">動作</th><th></th></tr></thead>';
+                echo '<table><thead><tr><th width="15%">選手画像(クリックで拡大)</th><th  width="15%">選手名</th><th  width="15%">国籍</th><th  width="15%">ポジション</th><th  width="15%">クラブ名</th><th></th><th  width="10%">動作</th><th></th></tr></thead>';
                     echo '<tbody>';
                     foreach ($pdo->query('SELECT Player. * , club_name FROM Player INNER JOIN Club ON Player.club_id = Club.club_id where club_flag=1') as $row) {
                         echo '<tr>';

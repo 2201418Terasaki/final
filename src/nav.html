@@ -10,7 +10,8 @@
     .menu {
   display: none;
   flex-direction: column;
-  background-color: #444;
+  /*background-color: #444;*/
+  background-color: rgba(68, 68, 68, 0.98); /* 透明感を追加 */
  /* position: absolute;*/
   position: fixed;
   top: 60px;
@@ -75,9 +76,10 @@
     <div class="menu-btn" @click="toggleMenu">&#9776;</div>
     <div class="menu" v-show="isMenuOpen">
       <div class="menu-close" @click="closeMenu">×</div>
-      <a class="menu-item" href="index.php" >選手一覧</a>
-      <a class="menu-item" href="Clubmanage.php">クラブ管理</a>
-      <a class="menu-item" href="Matchmanage.php">日程管理</a>
+      <a class="menu-item" href="index.php" >選手データ</a>
+      <a class="menu-item" href="Clubmanage.php">クラブデータ</a>
+      <a class="menu-item" href="Matchmanage.php"></a>
+      <a class="menu-item" href="Matchmanage.php"></a>
     </div>
   </div>
 </div>
